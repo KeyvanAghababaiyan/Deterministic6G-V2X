@@ -5,12 +5,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Deterministic 6G-V2X Systems</title>
   <style>
-    body { font-family: Arial, sans-serif; max-width: 900px; margin: 40px auto; padding: 0 16px; line-height: 1.6; }
-    h1 { font-size: 28px; margin-bottom: 4px; }
-    h2 { margin-top: 30px; }
-    .meta { color: #555; font-size: 14px; margin-bottom: 20px; }
-    .btns a { display: inline-block; margin: 6px 8px 6px 0; padding: 8px 14px; background: #f2f2f2; border-radius: 6px; text-decoration: none; color: #000; }
-    pre { background: #f9f9f9; padding: 12px; border-radius: 6px; overflow-x: auto; }
+    :root{
+      --fg:#111; --muted:#555; --line:#e9e9e9; --chip:#f2f2f2; --card:#fff;
+      --maxw:900px;
+    }
+    html,body{background:#fff; color:var(--fg)}
+    body{font-family: Arial, sans-serif; max-width: var(--maxw); margin: 40px auto; padding: 0 16px; line-height: 1.6;}
+    h1{font-size:28px; margin-bottom:4px;}
+    h2{margin-top:30px;}
+    .meta{color:var(--muted); font-size:14px; margin-bottom:20px;}
+    .btns a{display:inline-block; margin:6px 8px 6px 0; padding:8px 14px; background:var(--chip); border-radius:6px; text-decoration:none; color:#000; border:1px solid #eaeaea;}
+    pre{background:#f9f9f9; padding:12px; border-radius:6px; overflow-x:auto; border:1px solid var(--line);}
+    /* Deliverables grid/cards */
+    .grid{display:grid; gap:12px; grid-template-columns: repeat(auto-fill, minmax(260px,1fr));}
+    .card{border:1px solid var(--line); border-radius:14px; padding:14px; background:var(--card);}
+    .card h3{margin:0 0 .4rem; font-size:1.05rem;}
+    .muted{color:var(--muted);}
+    .btn{display:inline-block; margin-top:.5rem; padding:.5rem .9rem; border-radius:10px; border:1px solid #ddd; text-decoration:none; color:#000; background:#fafafa}
+    .small{font-size:.9rem}
   </style>
 </head>
 <body>
@@ -24,7 +36,9 @@
   <div class="btns">
     <a href="#abstract">Abstract</a>
     <a href="#funding">Funding</a>
+    <a href="#deliverables">Deliverables</a>
     <a href="#citation">Citation</a>
+    <a href="#contact">Contact</a>
   </div>
 
   <h2 id="abstract">Abstract</h2>
@@ -65,6 +79,21 @@
     <strong>Supervisor:</strong> Prof. Javier Gozalvez
   </p>
 
+  <!-- ===== Deliverables ===== -->
+  <h2 id="deliverables">Deliverables</h2>
+  <p class="muted small">Download MSCA-PF deliverables one by one. This list updates from <code>/deliverables/deliverables.json</code>.</p>
+
+  <div id="deliverables-grid" class="grid">
+    <!-- Fallback item (shown only if JSON not found) -->
+    <article class="card">
+      <h3>D1.1 – Data Management Plan (DMP)</h3>
+      <p class="muted small">Type: Report • Due: M6</p>
+      <a class="btn" href="./deliverables/D1.1_DMP.pdf" download>⬇️ Download</a>
+    </article>
+  </div>
+
+  <p class="muted small">Missing file? It may still be under review—please check back later.</p>
+
   <h2 id="citation">Citation</h2>
   <pre>
 @misc{aghababaiyan2025deterministic6gv2x,
@@ -75,7 +104,47 @@
 }
   </pre>
 
-  <h2>Contact</h2>
+  <h2 id="contact">Contact</h2>
   <p>Email: <a href="mailto:kaghababaiyan@umh.es">kaghababaiyan@umh.es</a></p>
+
+  <script>
+  (async function () {
+    const grid = document.getElementById('deliverables-grid');
+    if (!grid) return;
+    try {
+      // Works on GitHub Pages under /Deterministic6G-V2X/
+      const res = await fetch('./deliverables/deliverables.json', { cache: 'no-store' });
+      if (!res.ok) return;                 // keep fallback
+      const items = await res.json();
+      if (!Array.isArray(items) || !items.length) return;
+
+      grid.innerHTML = '';
+      items.forEach(d => {
+        const card = document.createElement('article');
+        card.className = 'card';
+
+        const h3 = document.createElement('h3');
+        h3.textContent = `${d.id} – ${d.title}`;
+
+        const meta = document.createElement('p');
+        meta.className = 'muted small';
+        meta.textContent = `Type: ${d.type} • Due: ${d.due}${d.updated ? ' • Updated: ' + d.updated : ''}`;
+
+        const a = document.createElement('a');
+        a.className = 'btn';
+        a.href = `./deliverables/${d.file}`;
+        a.setAttribute('download','');
+        a.textContent = '⬇️ Download';
+
+        card.appendChild(h3);
+        card.appendChild(meta);
+        card.appendChild(a);
+        grid.appendChild(card);
+      });
+    } catch (e) {
+      console.warn('deliverables.json not found/invalid', e);
+    }
+  })();
+  </script>
 </body>
 </html>
