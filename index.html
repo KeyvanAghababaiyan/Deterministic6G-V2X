@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     :root {
-      --bg: #050714;
+      --bg1: #263a80;   /* brighter blue */
+      --bg2: #0d1533;   /* deep navy */
       --card: #101526;
       --accent: #00d1b2;
       --text: #f5f5f7;
@@ -17,17 +18,17 @@
     body {
       margin: 0;
       font-family: system-ui, sans-serif;
-      background: radial-gradient(circle at top, #1a2250 0, #050714 60%);
+      background: radial-gradient(circle at top, var(--bg1) 0, var(--bg2) 60%);
       color: var(--text);
       text-align: center;
     }
 
-    /* NAV BAR (Tabs) */
+    /* NAV BAR */
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(5, 7, 20, 0.9);
+      background: rgba(5, 7, 20, 0.85);
       padding: 12px 24px;
       border-bottom: 1px solid var(--line);
       position: sticky;
@@ -56,36 +57,37 @@
       color: #050714;
     }
 
-    /* TOP LOGO STRIP */
+    /* TOP TWO LOGOS */
     .logo-strip {
       margin-top: 40px;
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 70px;
+      gap: 80px;
     }
 
-    /* EU + UMH logos BIGGER */
     .logo-strip img.side-logo {
-      height: 110px;   /* <-- increased size */
+      height: 140px;   /* now bigger */
       width: auto;
-      opacity: 0.95;
-    }
-
-    /* Project logo (largest) */
-    .logo-strip img.project-logo {
-      height: 150px;
-      width: auto;
-      opacity: 1;
     }
 
     h1 {
-      margin-top: 25px;
-      font-size: 1.9rem;
+      margin-top: 35px;
+      font-size: 2.1rem;
       width: min(90%, 900px);
       margin-left: auto;
       margin-right: auto;
       line-height: 1.3;
+    }
+
+    /* PROJECT LOGO BELOW TITLE */
+    .project-logo2 {
+      margin-top: 25px;
+    }
+
+    .project-logo2 img {
+      height: 170px;
+      width: auto;
     }
 
     .abstract {
@@ -117,7 +119,7 @@
 
 <body>
 
-  <!-- Navigation (Tabs) -->
+  <!-- Navigation Menu -->
   <div class="navbar">
     <div class="navbar-title">Deterministic6G-V2X</div>
     <div class="nav-links">
@@ -128,15 +130,19 @@
     </div>
   </div>
 
-  <!-- THREE LOGOS IN ONE ROW -->
+  <!-- TWO LOGOS ON TOP -->
   <div class="logo-strip">
     <img src="assets/logos/EC.png" class="side-logo" alt="EU Logo">
-    <img src="assets/logos/logo.png" class="project-logo" alt="Project Logo">
     <img src="assets/logos/UMH.png" class="side-logo" alt="UMH Logo">
   </div>
 
-  <!-- Title -->
-  <h1>Deterministic 6G-V2X Systems: A New Paradigm for Reliable V2X Networks</h1>
+  <!-- TITLE -->
+  <h1>Deterministic 6G-V2X Systems:<br>A New Paradigm for Reliable V2X Networks</h1>
+
+  <!-- PROJECT LOGO2 BELOW TITLE -->
+  <div class="project-logo2">
+    <img src="assets/logos/logo2.png" alt="Project Logo">
+  </div>
 
   <!-- ABSTRACT -->
   <div class="abstract">
