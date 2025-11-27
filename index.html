@@ -56,24 +56,27 @@
       color: #050714;
     }
 
-    /* TOP LOGO STRIP (3 logos) */
+    /* TOP LOGO STRIP */
     .logo-strip {
       margin-top: 40px;
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 60px;
+      gap: 70px;
     }
 
-    .logo-strip img {
-      height: 80px;
+    /* EU + UMH logos BIGGER */
+    .logo-strip img.side-logo {
+      height: 110px;   /* <-- increased size */
       width: auto;
-      opacity: 0.92;
+      opacity: 0.95;
     }
 
-    /* Project logo bigger */
+    /* Project logo (largest) */
     .logo-strip img.project-logo {
-      height: 130px;
+      height: 150px;
+      width: auto;
+      opacity: 1;
     }
 
     h1 {
@@ -109,9 +112,9 @@
       font-size: 1rem;
       box-shadow: 0 12px 28px rgba(0,0,0,0.45);
     }
-
   </style>
 </head>
+
 <body>
 
   <!-- Navigation (Tabs) -->
@@ -127,9 +130,9 @@
 
   <!-- THREE LOGOS IN ONE ROW -->
   <div class="logo-strip">
-    <img src="assets/logos/EC.png" alt="EU Logo">
+    <img src="assets/logos/EC.png" class="side-logo" alt="EU Logo">
     <img src="assets/logos/logo.png" class="project-logo" alt="Project Logo">
-    <img src="assets/logos/UMH.jpg" alt="UMH Logo">
+    <img src="assets/logos/UMH.png" class="side-logo" alt="UMH Logo">
   </div>
 
   <!-- Title -->
