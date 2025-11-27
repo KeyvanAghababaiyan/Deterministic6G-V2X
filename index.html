@@ -1,316 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Deterministic6G-V2X – Home</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     :root {
       --bg: #050714;
       --card: #101526;
       --accent: #00d1b2;
       --text: #f5f5f7;
-      --muted: #a0a4b8;
-      --line: #262a3c;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+      --muted: #b4b7c5;
+      --line: #2f3140;
     }
 
     body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #171d3a 0, #050714 55%);
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: radial-gradient(circle at top, #1a2250 0, #050714 60%);
       color: var(--text);
-      line-height: 1.6;
+      text-align: center;
     }
 
-    a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    /* Top bar */
-    .brandbar {
+    /* NAV BAR (tabs) */
+    .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 16px;
-      padding: 16px 24px;
+      background: rgba(5, 7, 20, 0.9);
+      padding: 12px 24px;
       border-bottom: 1px solid var(--line);
-      background: rgba(3, 5, 15, 0.95);
-      backdrop-filter: blur(12px);
       position: sticky;
       top: 0;
-      z-index: 20;
+      z-index: 10;
+      backdrop-filter: blur(12px);
     }
 
-    .brandbar-left {
+    .navbar-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .nav-links a {
+      margin-left: 18px;
+      font-size: 0.95rem;
+      color: var(--text);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+    }
+
+    .nav-links a:hover {
+      background: var(--accent);
+      color: #050714;
+    }
+
+    /* TOP SPONSOR LOGOS */
+    .top-logos {
+      margin-top: 25px;
       display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
+      justify-content: center;
+      gap: 35px;
     }
 
-    .brandbar img.logo {
-      max-height: 70px;
-      height: auto;
+    .top-logos img {
+      height: 55px;
+      width: auto;
+      opacity: 0.9;
+    }
+
+    /* PROJECT LOGO */
+    .project-logo {
+      margin-top: 40px;
+    }
+
+    .project-logo img {
+      height: 180px;
       width: auto;
     }
 
-    @media (max-width: 600px) {
-      .brandbar {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .brandbar img.logo {
-        max-height: 60px;
-      }
-    }
-
-    nav {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      align-items: center;
-    }
-
-    nav a.nav-link {
-      padding: 6px 12px;
-      border-radius: 999px;
-      border: 1px solid transparent;
-      color: var(--text);
-      font-size: 0.9rem;
-      white-space: nowrap;
-    }
-
-    nav a.nav-link:hover {
-      border-color: var(--accent);
-      text-decoration: none;
-    }
-
-    main {
-      max-width: 960px;
-      margin: 32px auto;
-      padding: 0 16px 48px;
-    }
-
-    .hero {
-      background: linear-gradient(135deg, rgba(0, 209, 178, 0.08), rgba(116, 76, 255, 0.12));
-      border-radius: 20px;
-      padding: 24px 24px 28px;
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
-    }
-
     h1 {
-      font-size: 1.9rem;
-      margin-bottom: 8px;
+      margin-top: 25px;
+      font-size: 2rem;
     }
 
-    .subtitle {
-      color: var(--muted);
-      font-size: 0.95rem;
-      margin-bottom: 18px;
-    }
-
-    .hero p {
-      font-size: 0.95rem;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 16px;
-    }
-
-    .btn-primary,
-    .btn-ghost {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      font-size: 0.9rem;
-      border: 1px solid transparent;
-      cursor: pointer;
-      text-decoration: none;
-      white-space: nowrap;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #050714;
-      border-color: var(--accent);
-      font-weight: 600;
-    }
-
-    .btn-primary:hover {
-      filter: brightness(1.05);
-      text-decoration: none;
-    }
-
-    .btn-ghost {
-      border-color: var(--line);
-      color: var(--text);
-      background: rgba(5, 7, 20, 0.7);
-    }
-
-    .btn-ghost:hover {
-      border-color: var(--accent);
-      text-decoration: none;
-    }
-
-    section {
-      margin-top: 32px;
-    }
-
-    h2 {
-      font-size: 1.25rem;
-      margin-bottom: 10px;
-    }
-
-    p {
-      font-size: 0.95rem;
-    }
-
-    ul {
-      margin-left: 18px;
-      font-size: 0.95rem;
-    }
-
-    .card {
+    .abstract {
+      margin: 30px auto;
+      width: min(900px, 90%);
       background: var(--card);
-      border-radius: 18px;
-      padding: 16px 18px;
+      padding: 20px 25px;
+      border-radius: 14px;
       border: 1px solid var(--line);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-      margin-top: 10px;
+      text-align: justify;
+      line-height: 1.6;
+      font-size: 0.95rem;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.45);
     }
 
-    .team-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 12px;
-      margin-top: 8px;
-    }
-
-    .team-item h3 {
+    .team {
+      margin: 25px auto;
+      width: min(700px, 92%);
+      background: var(--card);
+      padding: 18px 22px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      line-height: 1.6;
       font-size: 1rem;
-      margin-bottom: 2px;
-    }
-
-    .team-item .role {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-bottom: 4px;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.45);
     }
   </style>
 </head>
 <body>
-  <header class="brandbar">
-    <div class="brandbar-left">
-      <!-- لوگوها: مسیر را با فایل‌های واقعی عوض کن -->
-      <img src="img/eu-logo.png" class="logo" alt="EU logo" />
-      <img src="img/host-logo.png" class="logo" alt="Host institution logo" />
-      <img src="img/deterministic6g-logo.png" class="logo" alt="Deterministic6G-V2X project logo" />
+
+  <!-- Navigation (Tabs) -->
+  <div class="navbar">
+    <div class="navbar-title">Deterministic6G-V2X</div>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="deliverables.html" target="_blank">Deliverables</a>
+      <a href="funding.html" target="_blank">Funding</a>
+      <a href="contact.html" target="_blank">Contact</a>
     </div>
-    <nav>
-      <a class="nav-link" href="index.html">Home</a>
-      <a class="nav-link" href="deliverables.html" target="_blank" rel="noopener">Deliverables</a>
-      <a class="nav-link" href="funding.html" target="_blank" rel="noopener">Funding</a>
-      <a class="nav-link" href="contact.html" target="_blank" rel="noopener">Contact</a>
-    </nav>
-  </header>
+  </div>
 
-  <main>
-    <section class="hero">
-      <h1>Deterministic 6G-V2X Systems</h1>
-      <p class="subtitle">
-        Towards reliable, bounded-latency communication–computing–control for Connected and Automated Vehicles.
-      </p>
-      <p>
-        The Deterministic6G-V2X project explores how future 6G networks can guarantee predictable end-to-end latency for
-        safety-critical V2X applications. By integrating communication, edge/cloud computing, and control in a single
-        deterministic architecture, the project aims to support cooperative and automated driving with strict timing
-        constraints.
-      </p>
-      <div class="hero-actions">
-        <a class="btn-primary" href="deliverables.html" target="_blank" rel="noopener">View deliverables</a>
-        <a class="btn-ghost" href="funding.html" target="_blank" rel="noopener">Funding & host</a>
-        <a class="btn-ghost" href="contact.html" target="_blank" rel="noopener">Contact & profiles</a>
-      </div>
-    </section>
+  <!-- Sponsor Logos (Top) -->
+  <div class="top-logos">
+    <img src="assets/logos/EC.png" alt="EU Logo">
+    <img src="assets/logos/UMH.jpg" alt="UMH Logo">
+  </div>
 
-    <section>
-      <h2>Project summary</h2>
-      <div class="card">
-        <p>
-          Connected and Automated Vehicles (CAVs) generate massive data streams from sensors such as lidar, radar, and
-          cameras, which must be processed in real time and combined with information received via V2X links. Current
-          on-board processing is often insufficient to handle these loads with strict latency constraints, especially in
-          dense traffic scenarios.
-        </p>
-        <p>
-          Future 6G systems will extend 5G&apos;s Mobile Edge Computing capabilities, embedding AI and advanced networking
-          across the local–edge–cloud continuum. Deterministic6G-V2X studies how to allocate computation across this
-          continuum and how to design queueing and scheduling mechanisms so that communication, computing, and control
-          remain within bounded delays.
-        </p>
-      </div>
-    </section>
+  <!-- Main Project Logo -->
+  <div class="project-logo">
+    <img src="assets/logos/logo.png" alt="Project Logo">
+  </div>
 
-    <section>
-      <h2>Key objectives</h2>
-      <div class="card">
-        <ul>
-          <li>Model end-to-end latency including communication, computation, and control loops for V2X services.</li>
-          <li>Design deterministic mechanisms for task offloading across local, edge, and cloud resources.</li>
-          <li>Evaluate reliability and deadline-miss probabilities under realistic traffic and network conditions.</li>
-          <li>Provide guidelines for deterministic 6G-V2X architectures supporting cooperative driving.</li>
-        </ul>
-      </div>
-    </section>
+  <!-- Title -->
+  <h1>Deterministic 6G-V2X Systems</h1>
 
-    <section>
-      <h2>Project team</h2>
-      <div class="card">
-        <div class="team-list">
-          <div class="team-item">
-            <h3>Your Name</h3>
-            <div class="role">Fellow / Principal researcher</div>
-            <p>
-              Main researcher responsible for the design, implementation, and evaluation of the deterministic 6G-V2X
-              framework.
-            </p>
-          </div>
-          <div class="team-item">
-            <h3>Supervisor Name</h3>
-            <div class="role">Supervisor</div>
-            <p>
-              Scientific supervisor providing guidance on modelling, experimentation, and integration within the host
-              institution.
-            </p>
-          </div>
-          <div class="team-item">
-            <h3>Host Institution</h3>
-            <div class="role">Host organisation</div>
-            <p>
-              Research centre / university hosting the project, providing infrastructure, mentoring, and administrative
-              support.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
+  <!-- ABSTRACT -->
+  <div class="abstract">
+    <strong>Abstract:</strong><br><br>
+    The Deterministic6G V2X project addresses the growing demands of autonomous driving technologies, which require substantial processing power as
+    Connected and Automated Vehicles (CAVs) manage vast data streams and make real-time decisions. This involves processing extensive data from
+    sensors like lidar, radar, and cameras, and integrating this information with data from other vehicles via V2X communication, enhanced by AI
+    algorithms for effective decision-making. However, current vehicle processing capabilities are inadequate for the large data volumes generated by
+    V2X applications. While 5G networks have integrated computing capabilities through Mobile Edge Computing (MEC), 6G networks aim to further
+    embed AI and advanced networking across the Local-Edge-Cloud (LEC) continuum, enhancing processing and decision-making. The
+    Deterministic6G V2X project envisions automated vehicles connected to 6G networks, enabling cooperative processing and task distribution across
+    the network to maintain reliable communication, computing, and control within bounded latency. This requires a deterministic design of 6G networks,
+    ensuring predictable and reliable interactions between vehicles and the network. Our holistic approach to deterministic 6G-V2X systems considers not
+    just communication latency, but also computing and control latencies within the LEC continuum, optimizing processing unit selection based on
+    computational power, bandwidth, and latency needs. This design aims to enhance the reliability, efficiency, and scalability of V2X systems and
+    autonomous vehicles, advancing the seamless integration of next-generation networks.
+  </div>
+
+  <!-- TEAM -->
+  <div class="team">
+    <strong>Researcher:</strong> Keyvan Aghababaiyan<br>
+    <strong>Supervisor:</strong> Javier Gozalvez<br>
+    <strong>Host Institution:</strong> Universidad Miguel Hernández (UMH)
+  </div>
+
 </body>
 </html>
