@@ -1,145 +1,234 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Deterministic 6G-V2X Systems</title>
+  <meta charset="UTF-8" />
+  <title>Deterministic6G-V2X</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    :root{
-      --fg:#111; --muted:#555; --line:#e9e9e9; --chip:#f2f2f2; --card:#fff; --maxw:900px;
+    :root {
+      --bg: #050714;
+      --card: #101526;
+      --accent: #00d1b2;
+      --text: #f5f5f7;
+      --muted: #a0a4b8;
+      --line: #262a3c;
     }
-    html,body{background:#fff; color:var(--fg)}
-    body{font-family: Arial, sans-serif; max-width: var(--maxw); margin: 40px auto; padding: 0 16px; line-height: 1.6;}
-    h1{font-size:28px; margin-bottom:4px;}
-    h2{margin-top:30px;}
-    .meta{color:var(--muted); font-size:14px; margin-bottom:20px;}
-    .btns a{display:inline-block; margin:6px 8px 6px 0; padding:8px 14px; background:var(--chip); border-radius:6px; text-decoration:none; color:#000; border:1px solid #eaeaea;}
-    pre{background:#f9f9f9; padding:12px; border-radius:6px; overflow-x:auto; border:1px solid var(--line);}
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #171d3a 0, #050714 55%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
 
     /* Top logos */
-    .brandbar{display:flex; justify-content:space-between; align-items:center; gap:16px; padding:0 0 16px; border-bottom:1px solid var(--line);}
-    .brandbar img.logo{max-height:270px; height:auto; width:auto;}
-    @media (max-width:600px){ .brandbar img.logo{max-height:70px;} }
+    .brandbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(3, 5, 15, 0.95);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+    }
 
-    /* Deliverables grid/cards */
-    .grid{display:grid; gap:12px; grid-template-columns: repeat(auto-fill, minmax(280px,1fr));}
-    .card{border:1px solid var(--line); border-radius:14px; padding:14px; background:var(--card);}
-    .card h3{margin:0 0 .4rem; font-size:1.05rem;}
-    .muted{color:var(--muted);}
-    .small{font-size:.9rem}
-    .btn{display:inline-block; margin-top:.5rem; padding:.5rem .9rem; border-radius:10px; border:1px solid #ddd; text-decoration:none; color:#000; background:#fafafa}
-    .btn[aria-disabled="true"]{opacity:.55; pointer-events:none; cursor:not-allowed;}
+    .brandbar-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .brandbar img.logo {
+      max-height: 70px;
+      height: auto;
+      width: auto;
+    }
+
+    @media (max-width: 600px) {
+      .brandbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .brandbar img.logo {
+        max-height: 60px;
+      }
+    }
+
+    /* Nav */
+    nav {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    nav a.nav-link {
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      color: var(--text);
+      font-size: 0.9rem;
+      white-space: nowrap;
+    }
+
+    nav a.nav-link:hover {
+      border-color: var(--accent);
+      text-decoration: none;
+    }
+
+    /* Layout */
+    main {
+      max-width: 960px;
+      margin: 32px auto;
+      padding: 0 16px 48px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, rgba(0, 209, 178, 0.08), rgba(116, 76, 255, 0.12));
+      border-radius: 20px;
+      padding: 24px 24px 28px;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
+    }
+
+    h1 {
+      font-size: 1.9rem;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 18px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .btn-primary,
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      border: 1px solid transparent;
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #050714;
+      border-color: var(--accent);
+      font-weight: 600;
+    }
+
+    .btn-primary:hover {
+      filter: brightness(1.05);
+      text-decoration: none;
+    }
+
+    .btn-ghost {
+      border-color: var(--line);
+      color: var(--text);
+      background: rgba(5, 7, 20, 0.7);
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--accent);
+      text-decoration: none;
+    }
+
+    section {
+      margin-top: 32px;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 0.95rem;
+    }
   </style>
 </head>
 <body>
-
-  <!-- Logos -->
-  <header class="brandbar" aria-label="Brand logos">
-    <img class="logo" src="./assets/logos/EC.png" alt="European Commission logo">
-    <img class="logo" src="./assets/logos/UMH.jpg" alt="Universitas Miguel Hernández (UMH) logo">
+  <header class="brandbar">
+    <div class="brandbar-left">
+      <!-- Replace src paths with your real logo files -->
+      <img src="img/eu-logo.png" class="logo" alt="EU logo" />
+      <img src="img/host-logo.png" class="logo" alt="Host institution logo" />
+      <!-- NEW: project logo -->
+      <img src="img/deterministic6g-logo.png" class="logo" alt="Deterministic6G-V2X project logo" />
+    </div>
+    <nav>
+      <!-- Home in same tab -->
+      <a class="nav-link" href="index.html">Home</a>
+      <!-- Others open in a new tab, as requested -->
+      <a class="nav-link" href="abstract.html" target="_blank" rel="noopener">Abstract</a>
+      <a class="nav-link" href="funding.html" target="_blank" rel="noopener">Funding</a>
+      <a class="nav-link" href="deliverables.html" target="_blank" rel="noopener">Deliverables</a>
+      <a class="nav-link" href="contact.html" target="_blank" rel="noopener">Contact</a>
+    </nav>
   </header>
 
-  <h1>Deterministic 6G-V2X Systems: A New Paradigm for Reliable V2X Networks</h1>
-  <p class="meta">
-    <strong>Researcher:</strong> Keyvan Aghababaiyan · 
-    <strong>Institution:</strong> Universidad Miguel Hernández de Elche · 
-    <strong>Date:</strong> 2025
-  </p>
+  <main>
+    <section class="hero">
+      <h1>Deterministic 6G-V2X Systems: A New Paradigm for Reliable V2X Networks</h1>
+      <p class="subtitle">
+        A project on deterministic communication–computing–control for connected and automated vehicles across the
+        local–edge–cloud continuum.
+      </p>
 
-  <div class="btns">
-    <a href="#abstract">Abstract</a>
-    <a href="#funding">Funding</a>
-    <a href="#deliverables">Deliverables</a>
-    <a href="#citation">Citation</a>
-    <a href="#contact">Contact</a>
-  </div>
+      <p>
+        Deterministic6G-V2X explores how future 6G networks can provide bounded end-to-end latency and reliability for
+        safety-critical V2X services, integrating communication, computing, and control into a single deterministic
+        architecture.
+      </p>
 
-  
-<!-- Abstract (your full text) -->
-<h2 id="abstract">Abstract</h2>
-<p style="text-align: justify;">
-  The Deterministic6G V2X project addresses the growing demands of autonomous driving technologies, which require substantial processing power as Connected and Automated Vehicles (CAVs) manage vast data streams and make real-time decisions. This involves processing extensive data from sensors like lidar, radar, and cameras, and integrating this information with data from other vehicles via V2X communication, enhanced by AI algorithms for effective decision-making. However, current vehicle processing capabilities are inadequate for the large data volumes generated by V2X applications. While 5G networks have integrated computing capabilities through Mobile Edge Computing (MEC), 6G networks aim to further embed AI and advanced networking across the Local-Edge-Cloud (LEC) continuum, enhancing processing and decision-making. The Deterministic6G V2X project envisions automated vehicles connected to 6G networks, enabling cooperative processing and task distribution across the network to maintain reliable communication, computing, and control within bounded latency. This requires a deterministic design of 6G networks, ensuring predictable and reliable interactions between vehicles and the network. Our holistic approach to deterministic 6G-V2X systems considers not just communication latency, but also computing and control latencies within the LEC continuum, optimizing processing unit selection based on computational power, bandwidth, and latency needs. This design aims to enhance the reliability, efficiency, and scalability of V2X systems and autonomous vehicles, advancing the seamless integration of next-generation networks.
-</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="abstract.html" target="_blank" rel="noopener">Read full abstract</a>
+        <a class="btn-ghost" href="deliverables.html" target="_blank" rel="noopener">View project deliverables</a>
+      </div>
+    </section>
 
-
-  <h2 id="funding">Funding</h2>
-  <p>
-    <strong>Programme:</strong> Horizon Europe – Marie Skłodowska-Curie Actions (MSCA)<br>
-    <strong>Funding subtype:</strong> MSCA Postdoctoral Fellowships<br>
-    <strong>Total funding amount:</strong> EUR 194,074.56<br>
-    <strong>Project start date:</strong> 1 September 2025<br>
-    <strong>Duration:</strong> 2 years<br>
-    <strong>Supervisor:</strong> Prof. Javier Gozalvez
-  </p>
-
-  <!-- Deliverables -->
-  <h2 id="deliverables">Deliverables</h2>
-  <p class="muted small">All deliverables are listed below; downloads will be enabled once files are available.</p>
-
-  <div class="grid">
-    <!-- WP1 -->
-    <article class="card">
-      <h3>D1.1 — Mobility Declaration, Project Management, and Risk Mitigation Plan (including updates)</h3>
-      <p class="muted small">WP1 — Project management </p>
-      <a class="btn" aria-disabled="true">⏳ Coming soon</a>
-    </article>
-
-    <!-- WP2 -->
-    <article class="card">
-      <h3>D2.1 — Stochastic models for communication, computing, and control co-design (report, code, including second phase updates)</h3>
-      <p class="muted small">WP2 — Stochastic models for co-design </p>
-      <a class="btn" aria-disabled="true">⏳ Coming soon</a>
-    </article>
-
-    <article class="card">
-      <h3>D2.2 — CAM scenarios and generated datasets</h3>
-      <p class="muted small">WP2 — Stochastic models for co-design </p>
-      <a class="btn" aria-disabled="true">⏳ Coming soon</a>
-    </article>
-
-    <!-- WP3 -->
-    <article class="card">
-      <h3>D3.1 — Communication, computing, and control co-design (report, code)</h3>
-      <p class="muted small">WP3 — Communication, computing, and control co-design </p>
-      <a class="btn" aria-disabled="true">⏳ Coming soon</a>
-    </article>
-
-    <article class="card">
-      <h3>D3.2 — Predictive communication, computing, and control co-design (report, code)</h3>
-      <p class="muted small">WP3 — Communication, computing, and control co-design </p>
-      <a class="btn" aria-disabled="true">⏳ Coming soon</a>
-    </article>
-
-    <!-- WP4 -->
-    <article class="card">
-      <h3>D4.1 — Training program, career development plan, and evaluation questionnaire</h3>
-      <p class="muted small">WP4 — Training and transfer of knowledge </p>
-      <a class="btn" aria-disabled="true">⏳ Coming soon</a>
-    </article>
-
-    <!-- WP5 -->
-    <article class="card">
-      <h3>D5.1 — Plan for the dissemination, exploitation, and communication activities</h3>
-      <p class="muted small">WP5 — Dissemination, exploitation, and communication </p>
-      <a class="btn" aria-disabled="true">⏳ Coming soon</a>
-    </article>
-  </div>
-
-  <h2 id="citation">Citation</h2>
-  <pre>
-@misc{aghababaiyan2025deterministic6gv2x,
-  title   = {Deterministic 6G-V2X Systems: A New Paradigm for Reliable V2X Networks},
-  author  = {Aghababaiyan, Keyvan},
-  year    = {2025},
-  note    = {Project webpage: https://keyvanaghababaiyan.github.io/Deterministic6G-V2X/}
-}
-  </pre>
-
-  <h2 id="contact">Contact</h2>
-  <p>Email: <a href="mailto:kaghababaiyan@umh.es">kaghababaiyan@umh.es</a></p>
-
+    <section>
+      <h2>Overview</h2>
+      <p>
+        The project combines queueing-theoretic analysis, network simulation, and experimental validation to design and
+        evaluate deterministic mechanisms for 6G-enabled cooperative driving. Work packages cover theoretical
+        foundations, system design, implementation, and dissemination.
+      </p>
+    </section>
+  </main>
 </body>
 </html>
-
-
-
