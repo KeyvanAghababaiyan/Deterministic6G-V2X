@@ -6,13 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     :root {
-      --bg1: #263a80;   /* brighter blue */
-      --bg2: #0d1533;   /* deep navy */
-      --card: #101526;
-      --accent: #00d1b2;
+      --bg1: #3f59c9;   /* brighter blue */
+      --bg2: #10205f;   /* deep bright navy */
+      --card: #0f173a;
+      --accent: #00e0c0;
       --text: #f5f5f7;
-      --muted: #b4b7c5;
-      --line: #2f3140;
+      --muted: #c8cad4;
+      --line: #2f3145;
     }
 
     body {
@@ -28,12 +28,12 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(5, 7, 20, 0.85);
+      background: rgba(10, 15, 40, 0.85);
       padding: 12px 24px;
       border-bottom: 1px solid var(--line);
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 20;
       backdrop-filter: blur(12px);
     }
 
@@ -57,52 +57,66 @@
       color: #050714;
     }
 
-    /* TOP TWO LOGOS */
-    .logo-strip {
-      margin-top: 40px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 80px;
+    /* LEFT + RIGHT TOP CORNER LOGOS */
+    .corner-logos {
+      margin-top: 30px;
+      width: 100%;
+      position: relative;
     }
 
-    .logo-strip img.side-logo {
-      height: 140px;   /* now bigger */
+    .corner-logos img {
+      position: absolute;
+      top: 0;
+      height: 140px;   /* still large */
       width: auto;
+      opacity: 0.95;
     }
 
+    .corner-logos img.left {
+      left: 20px;      /* closer to left corner */
+    }
+
+    .corner-logos img.right {
+      right: 20px;     /* closer to right corner */
+    }
+
+    /* Center title */
     h1 {
-      margin-top: 35px;
-      font-size: 2.1rem;
+      margin-top: 150px;
+      font-size: 2.2rem;
       width: min(90%, 900px);
       margin-left: auto;
       margin-right: auto;
       line-height: 1.3;
+      font-weight: 600;
     }
 
-    /* PROJECT LOGO BELOW TITLE */
-    .project-logo2 {
+    /* PROJECT LOGO3 UNDER TITLE */
+    .project-logo3 {
       margin-top: 25px;
     }
 
-    .project-logo2 img {
-      height: 170px;
+    .project-logo3 img {
+      height: 180px;
       width: auto;
+      opacity: 1;
     }
 
+    /* Abstract box */
     .abstract {
-      margin: 30px auto;
-      width: min(900px, 90%);
+      margin: 35px auto;
+      width: min(900px, 92%);
       background: var(--card);
-      padding: 20px 25px;
+      padding: 22px 26px;
       border-radius: 14px;
       border: 1px solid var(--line);
       text-align: justify;
       line-height: 1.6;
-      font-size: 0.95rem;
+      font-size: 1rem;
       box-shadow: 0 12px 28px rgba(0,0,0,0.45);
     }
 
+    /* Team box */
     .team {
       margin: 25px auto;
       width: min(700px, 92%);
@@ -119,7 +133,7 @@
 
 <body>
 
-  <!-- Navigation Menu -->
+  <!-- Navigation -->
   <div class="navbar">
     <div class="navbar-title">Deterministic6G-V2X</div>
     <div class="nav-links">
@@ -130,18 +144,18 @@
     </div>
   </div>
 
-  <!-- TWO LOGOS ON TOP -->
-  <div class="logo-strip">
-    <img src="assets/logos/EC.png" class="side-logo" alt="EU Logo">
-    <img src="assets/logos/UMH.png" class="side-logo" alt="UMH Logo">
+  <!-- CORNER LOGOS -->
+  <div class="corner-logos">
+    <img src="assets/logos/EC.png" class="left" alt="EU Logo">
+    <img src="assets/logos/UMH.png" class="right" alt="UMH Logo">
   </div>
 
   <!-- TITLE -->
   <h1>Deterministic 6G-V2X Systems:<br>A New Paradigm for Reliable V2X Networks</h1>
 
-  <!-- PROJECT LOGO2 BELOW TITLE -->
-  <div class="project-logo2">
-    <img src="assets/logos/logo2.png" alt="Project Logo">
+  <!-- PROJECT LOGO3 BELOW TITLE -->
+  <div class="project-logo3">
+    <img src="assets/logos/logo3.png" alt="Project Logo">
   </div>
 
   <!-- ABSTRACT -->
@@ -154,11 +168,7 @@
     V2X applications. While 5G networks have integrated computing capabilities through Mobile Edge Computing (MEC), 6G networks aim to further
     embed AI and advanced networking across the Local-Edge-Cloud (LEC) continuum, enhancing processing and decision-making. The
     Deterministic6G V2X project envisions automated vehicles connected to 6G networks, enabling cooperative processing and task distribution across
-    the network to maintain reliable communication, computing, and control within bounded latency. This requires a deterministic design of 6G networks,
-    ensuring predictable and reliable interactions between vehicles and the network. Our holistic approach to deterministic 6G-V2X systems considers not
-    just communication latency, but also computing and control latencies within the LEC continuum, optimizing processing unit selection based on
-    computational power, bandwidth, and latency needs. This design aims to enhance the reliability, efficiency, and scalability of V2X systems and
-    autonomous vehicles, advancing the seamless integration of next-generation networks.
+    the network to maintain reliable communication, computing, and control within bounded latency...
   </div>
 
   <!-- TEAM -->
