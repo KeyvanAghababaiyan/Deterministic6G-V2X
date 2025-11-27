@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Deterministic6G-V2X – Contact</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    :root {
+      --bg1: #7f9aff;
+      --bg2: #2738b5;
+      --card: #101737;
+      --accent: #00e0c0;
+      --text: #ffffff;
+      --muted: #dfe2ff;
+      --line: #30345a;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, sans-serif;
+      background: radial-gradient(circle at top, var(--bg1) 0%, var(--bg2) 75%);
+      color: var(--text);
+    }
+
+    /* NAV BAR */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10, 15, 40, 0.8);
+      padding: 12px 24px;
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(10px);
+    }
+
+    .navbar-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .nav-links a {
+      margin-left: 18px;
+      font-size: 0.95rem;
+      color: var(--text);
+      text-decoration: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+    }
+
+    .nav-links a:hover {
+      background: var(--accent); color: #050714;
+    }
+
+    /* LOGOS */
+    .logo-strip {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 160px;
+    }
+
+    .logo-strip img {
+      height: 120px; width:auto; opacity:0.96;
+    }
+
+    /* CONTENT */
+    main {
+      max-width: 900px;
+      margin: 36px auto 70px;
+      padding: 0 18px;
+    }
+
+    h1 {
+      text-align:center;
+      font-size:2rem;
+      margin-bottom:18px;
+    }
+
+    .section-title {
+      font-size:1.3rem;
+      margin-top:30px;
+      margin-bottom:10px;
+      color: var(--accent);
+    }
+
+    .contact-box {
+      background: rgba(10, 15, 40, 0.7);
+      padding: 20px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.15);
+      margin-bottom: 30px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .profile img {
+      width: 140px;
+      height: 140px;
+      border-radius: 10px;
+      object-fit: cover;
+      border:1px solid rgba(255,255,255,0.2);
+    }
+
+    .profile-info {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .icons a {
+      display: inline-flex;
+      align-items:center;
+      gap: 8px;
+      margin-right: 18px;
+      color: var(--accent);
+      font-size: 0.95rem;
+    }
+
+    .icons img {
+      width: 22px;
+      height: 22px;
+      opacity: 0.9;
+    }
+
+    .icons a:hover {
+      text-decoration: underline;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <div class="navbar-title">Deterministic6G-V2X</div>
+    <div class="nav-links">
+      <a href="index.html" target="_blank">Home</a>
+      <a href="deliverables.html" target="_blank">Deliverables</a>
+      <a href="funding.html" target="_blank">Funding</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+
+  <!-- LOGOS -->
+  <div class="logo-strip">
+    <img src="assets/logos/EC.png" alt="EU logo">
+    <img src="assets/logos/UMH.png" alt="UMH logo">
+  </div>
+
+  <main>
+
+    <h1>Contact</h1>
+
+    <!-- Researcher -->
+    <div class="contact-box">
+      <div class="section-title">Researcher</div>
+
+      <div class="profile">
+        <img src="assets/people/researcher.jpg" alt="Researcher photo">
+        <div class="profile-info">
+          <strong>Keyvan Aghababaiyan</strong><br>
+          Marie Skłodowska-Curie Postdoctoral Fellow<br>
+          Universidad Miguel Hernández de Elche (UMH)
+        </div>
+      </div>
+
+      <div class="icons">
+        <a href="mailto:kaghababaiyan@umh.es">
+          <img src="assets/icons/email.png"> Email
+        </a>
+
+        <a href="https://es.linkedin.com/in/keyvan-aghababaiyan-81365876" target="_blank">
+          <img src="assets/icons/linkedin.png"> LinkedIn
+        </a>
+
+        <a href="https://scholar.google.com/citations?user=e2i8dZYAAAAJ&hl=en" target="_blank">
+          <img src="assets/icons/scholar.png"> Google Scholar
+        </a>
+      </div>
+    </div>
+
+    <!-- Supervisor -->
+    <div class="contact-box">
+      <div class="section-title">Supervisor</div>
+
+      <div class="profile">
+        <img src="assets/people/supervisor.jpg" alt="Supervisor photo">
+        <div class="profile-info">
+          <strong>Prof. Javier Gozálvez</strong><br>
+          Department of Communications Engineering<br>
+          Universidad Miguel Hernández de Elche (UMH)
+        </div>
+      </div>
+
+      <div class="icons">
+        <a href="mailto:j.gozalvez@umh.es" target="_blank">
+          <img src="assets/icons/email.png"> Email
+        </a>
+
+        <a href="https://www.linkedin.com/in/javier-gozalvez" target="_blank">
+          <img src="assets/icons/linkedin.png"> LinkedIn
+        </a>
+
+        <a href="https://scholar.google.com/citations?user=VHG9Vj8AAAAJ" target="_blank">
+          <img src="assets/icons/scholar.png"> Google Scholar
+        </a>
+      </div>
+    </div>
+
+  </main>
+
+</body>
+</html>
