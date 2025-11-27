@@ -9,7 +9,6 @@
     :root {
       --bg1: #7f9aff;
       --bg2: #2738b5;
-      --card: #101737;
       --accent: #00e0c0;
       --text: #ffffff;
       --muted: #dfe2ff;
@@ -23,12 +22,12 @@
       color: var(--text);
     }
 
-    /* NAV BAR */
+    /* NAV */
     .navbar {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(10, 15, 40, 0.8);
+      background: rgba(10,15,40,0.8);
       padding: 12px 24px;
       border-bottom: 1px solid var(--line);
       position: sticky;
@@ -36,61 +35,35 @@
       z-index: 20;
       backdrop-filter: blur(10px);
     }
-
-    .navbar-title {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--accent);
-    }
-
+    .navbar-title { font-size: 1.2rem; color: var(--accent); font-weight: 600; }
     .nav-links a {
-      margin-left: 18px;
-      font-size: 0.95rem;
-      color: var(--text);
-      text-decoration: none;
-      padding: 6px 12px;
-      border-radius: 6px;
+      margin-left: 18px; padding: 6px 12px;
+      color: var(--text); text-decoration: none; border-radius: 6px;
     }
-
-    .nav-links a:hover {
-      background: var(--accent);
-      color: #050714;
-    }
+    .nav-links a:hover { background: var(--accent); color:#050714; }
 
     /* LOGOS */
     .logo-strip {
-      margin-top: 30px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 160px;
+      margin-top: 30px; display: flex;
+      justify-content: center; align-items: center; gap: 160px;
     }
+    .logo-strip img { height: 120px; opacity: 0.96; }
 
-    .logo-strip img {
-      height: 120px;
-      width: auto;
-      opacity: 0.96;
-    }
-
+    /* MAIN */
     main {
       max-width: 900px;
       margin: 36px auto 70px;
       padding: 0 18px;
     }
-
-    h1 {
-      text-align: center;
-      font-size: 2rem;
-      margin-bottom: 22px;
-    }
+    h1 { text-align:center; font-size:2rem; margin-bottom:22px; }
 
     .contact-box {
-      background: rgba(10, 15, 40, 0.7);
+      background: rgba(10,15,40,0.7);
       padding: 20px;
       border-radius: 16px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255,255,255,0.15);
       margin-bottom: 30px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.35);
     }
 
     .section-title {
@@ -108,11 +81,10 @@
     }
 
     .profile img {
-      width: 150px;
-      height: 150px;
+      width: 150px; height: 150px;
       border-radius: 12px;
       object-fit: cover;
-      border: 1px solid rgba(255, 255, 255, 0.2);
+      border:1px solid rgba(255,255,255,0.2);
     }
 
     .profile-info {
@@ -121,7 +93,7 @@
       min-width: 220px;
     }
 
-    .profile-info .email-text {
+    .email-text {
       margin-top: 6px;
       font-size: 0.95rem;
       color: var(--muted);
@@ -144,20 +116,19 @@
     }
 
     .icons img {
-      width: 24px;
-      height: 24px;
-      object-fit: contain;   /* مهم: سایز همه آیکن‌ها یکسان می‌شود */
+      width: 24px; height: 24px;
+      object-fit: contain;
       opacity: 0.9;
     }
 
-    .icons a:hover {
-      text-decoration: underline;
-    }
+    .icons a:hover { text-decoration: underline; }
+
   </style>
 </head>
+
 <body>
 
-  <!-- NAVBAR -->
+  <!-- NAV -->
   <div class="navbar">
     <div class="navbar-title">Deterministic6G-V2X</div>
     <div class="nav-links">
@@ -170,22 +141,24 @@
 
   <!-- LOGOS -->
   <div class="logo-strip">
-    <img src="assets/logos/EC.png" alt="EU logo">
-    <img src="assets/logos/UMH.png" alt="UMH logo">
+    <img src="assets/logos/EC.png" alt="EU Logo">
+    <img src="assets/logos/UMH.png" alt="UMH Logo">
   </div>
 
   <main>
+
     <h1>Contact</h1>
 
-    <!-- RESEARCHER -->
+    <!-- Researcher -->
     <div class="contact-box">
       <div class="section-title">Researcher</div>
+
       <div class="profile">
-        <img src="assets/people/researcher.jpg" alt="Keyvan Aghababaiyan">
+        <img src="assets/people/researcher.jpg" alt="Researcher photo">
         <div class="profile-info">
           <strong>Keyvan Aghababaiyan</strong><br>
           Marie Skłodowska-Curie Postdoctoral Fellow<br>
-          Universidad Miguel Hernández de Elche (UMH)
+          Universidad Miguel Hernández de Elche (UMH)<br>
           <div class="email-text">
             Email: kaghababaiyan@umh.es
           </div>
@@ -193,27 +166,26 @@
       </div>
 
       <div class="icons">
-        <a href="mailto:kaghababaiyan@umh.es">
-          <img src="assets/icons/email.png" alt="Email icon"> Email
-        </a>
         <a href="https://es.linkedin.com/in/keyvan-aghababaiyan-81365876" target="_blank">
           <img src="assets/icons/linkedin.png" alt="LinkedIn icon"> LinkedIn
         </a>
+
         <a href="https://scholar.google.com/citations?user=e2i8dZYAAAAJ&hl=en" target="_blank">
-          <img src="assets/icons/scholar.png" alt="Scholar icon"> Google Scholar
+          <img src="assets/icons/scholar.png" alt="Google Scholar icon"> Google Scholar
         </a>
       </div>
     </div>
 
-    <!-- SUPERVISOR -->
+    <!-- Supervisor -->
     <div class="contact-box">
       <div class="section-title">Supervisor</div>
+
       <div class="profile">
-        <img src="assets/people/supervisor.jpg" alt="Javier Gozálvez">
+        <img src="assets/people/supervisor.jpg" alt="Supervisor photo">
         <div class="profile-info">
           <strong>Prof. Javier Gozálvez</strong><br>
           Department of Communications Engineering<br>
-          Universidad Miguel Hernández de Elche (UMH)
+          Universidad Miguel Hernández de Elche (UMH)<br>
           <div class="email-text">
             Email: j.gozalvez@umh.es
           </div>
@@ -221,17 +193,16 @@
       </div>
 
       <div class="icons">
-        <a href="mailto:j.gozalvez@umh.es">
-          <img src="assets/icons/email.png" alt="Email icon"> Email
-        </a>
         <a href="https://es.linkedin.com/in/javier-gozalvez-sempere-63332b1" target="_blank">
           <img src="assets/icons/linkedin.png" alt="LinkedIn icon"> LinkedIn
         </a>
+
         <a href="https://scholar.google.es/citations?user=ILGKNBcAAAAJ&hl=es" target="_blank">
-          <img src="assets/icons/scholar.png" alt="Scholar icon"> Google Scholar
+          <img src="assets/icons/scholar.png" alt="Google Scholar icon"> Google Scholar
         </a>
       </div>
     </div>
+
   </main>
 </body>
 </html>
