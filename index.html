@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Deterministic6G-V2X</title>
+  <title>Deterministic6G-V2X – Home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     :root {
@@ -36,7 +36,7 @@
       text-decoration: underline;
     }
 
-    /* Top logos */
+    /* Top bar */
     .brandbar {
       display: flex;
       justify-content: space-between;
@@ -74,7 +74,6 @@
       }
     }
 
-    /* Nav */
     nav {
       display: flex;
       gap: 10px;
@@ -96,7 +95,6 @@
       text-decoration: none;
     }
 
-    /* Layout */
     main {
       max-width: 960px;
       margin: 32px auto;
@@ -120,6 +118,10 @@
       color: var(--muted);
       font-size: 0.95rem;
       margin-bottom: 18px;
+    }
+
+    .hero p {
+      font-size: 0.95rem;
     }
 
     .hero-actions {
@@ -179,55 +181,135 @@
     p {
       font-size: 0.95rem;
     }
+
+    ul {
+      margin-left: 18px;
+      font-size: 0.95rem;
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 18px;
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+      margin-top: 10px;
+    }
+
+    .team-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .team-item h3 {
+      font-size: 1rem;
+      margin-bottom: 2px;
+    }
+
+    .team-item .role {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 4px;
+    }
   </style>
 </head>
 <body>
   <header class="brandbar">
     <div class="brandbar-left">
-      <!-- Replace src paths with your real logo files -->
+      <!-- لوگوها: مسیر را با فایل‌های واقعی عوض کن -->
       <img src="img/eu-logo.png" class="logo" alt="EU logo" />
       <img src="img/host-logo.png" class="logo" alt="Host institution logo" />
-      <!-- NEW: project logo -->
       <img src="img/deterministic6g-logo.png" class="logo" alt="Deterministic6G-V2X project logo" />
     </div>
     <nav>
-      <!-- Home in same tab -->
       <a class="nav-link" href="index.html">Home</a>
-      <!-- Others open in a new tab, as requested -->
-      <a class="nav-link" href="abstract.html" target="_blank" rel="noopener">Abstract</a>
-      <a class="nav-link" href="funding.html" target="_blank" rel="noopener">Funding</a>
       <a class="nav-link" href="deliverables.html" target="_blank" rel="noopener">Deliverables</a>
+      <a class="nav-link" href="funding.html" target="_blank" rel="noopener">Funding</a>
       <a class="nav-link" href="contact.html" target="_blank" rel="noopener">Contact</a>
     </nav>
   </header>
 
   <main>
     <section class="hero">
-      <h1>Deterministic 6G-V2X Systems: A New Paradigm for Reliable V2X Networks</h1>
+      <h1>Deterministic 6G-V2X Systems</h1>
       <p class="subtitle">
-        A project on deterministic communication–computing–control for connected and automated vehicles across the
-        local–edge–cloud continuum.
+        Towards reliable, bounded-latency communication–computing–control for Connected and Automated Vehicles.
       </p>
-
       <p>
-        Deterministic6G-V2X explores how future 6G networks can provide bounded end-to-end latency and reliability for
-        safety-critical V2X services, integrating communication, computing, and control into a single deterministic
-        architecture.
+        The Deterministic6G-V2X project explores how future 6G networks can guarantee predictable end-to-end latency for
+        safety-critical V2X applications. By integrating communication, edge/cloud computing, and control in a single
+        deterministic architecture, the project aims to support cooperative and automated driving with strict timing
+        constraints.
       </p>
-
       <div class="hero-actions">
-        <a class="btn-primary" href="abstract.html" target="_blank" rel="noopener">Read full abstract</a>
-        <a class="btn-ghost" href="deliverables.html" target="_blank" rel="noopener">View project deliverables</a>
+        <a class="btn-primary" href="deliverables.html" target="_blank" rel="noopener">View deliverables</a>
+        <a class="btn-ghost" href="funding.html" target="_blank" rel="noopener">Funding & host</a>
+        <a class="btn-ghost" href="contact.html" target="_blank" rel="noopener">Contact & profiles</a>
       </div>
     </section>
 
     <section>
-      <h2>Overview</h2>
-      <p>
-        The project combines queueing-theoretic analysis, network simulation, and experimental validation to design and
-        evaluate deterministic mechanisms for 6G-enabled cooperative driving. Work packages cover theoretical
-        foundations, system design, implementation, and dissemination.
-      </p>
+      <h2>Project summary</h2>
+      <div class="card">
+        <p>
+          Connected and Automated Vehicles (CAVs) generate massive data streams from sensors such as lidar, radar, and
+          cameras, which must be processed in real time and combined with information received via V2X links. Current
+          on-board processing is often insufficient to handle these loads with strict latency constraints, especially in
+          dense traffic scenarios.
+        </p>
+        <p>
+          Future 6G systems will extend 5G&apos;s Mobile Edge Computing capabilities, embedding AI and advanced networking
+          across the local–edge–cloud continuum. Deterministic6G-V2X studies how to allocate computation across this
+          continuum and how to design queueing and scheduling mechanisms so that communication, computing, and control
+          remain within bounded delays.
+        </p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Key objectives</h2>
+      <div class="card">
+        <ul>
+          <li>Model end-to-end latency including communication, computation, and control loops for V2X services.</li>
+          <li>Design deterministic mechanisms for task offloading across local, edge, and cloud resources.</li>
+          <li>Evaluate reliability and deadline-miss probabilities under realistic traffic and network conditions.</li>
+          <li>Provide guidelines for deterministic 6G-V2X architectures supporting cooperative driving.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Project team</h2>
+      <div class="card">
+        <div class="team-list">
+          <div class="team-item">
+            <h3>Your Name</h3>
+            <div class="role">Fellow / Principal researcher</div>
+            <p>
+              Main researcher responsible for the design, implementation, and evaluation of the deterministic 6G-V2X
+              framework.
+            </p>
+          </div>
+          <div class="team-item">
+            <h3>Supervisor Name</h3>
+            <div class="role">Supervisor</div>
+            <p>
+              Scientific supervisor providing guidance on modelling, experimentation, and integration within the host
+              institution.
+            </p>
+          </div>
+          <div class="team-item">
+            <h3>Host Institution</h3>
+            <div class="role">Host organisation</div>
+            <p>
+              Research centre / university hosting the project, providing infrastructure, mentoring, and administrative
+              support.
+            </p>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 </body>
